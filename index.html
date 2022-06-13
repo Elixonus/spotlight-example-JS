@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Spotlight!</title>
+    </head>
+
+    <body>
+        <div class="main" id="main">
+            <div class="cursor-box" id="spotlight">
+              <div class="cursor-box-child" id="spotlight-child"></div>
+            </div>
+            <div class="thing">
+          </div>
+
+        <style>
+
+            * {
+            font-size: 20px;
+            font-family: 'Consolas', monospace;
+            color: #00aa00;
+            overflow: hidden;
+            }
+            .main {
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            background-color: #000;
+            background: linear-gradient(45deg, #010,#333,#010);
+            }
+            section {
+            padding: 1em;
+            }
+            p {
+            font-size: 14px;
+            opacity: 1;
+            }
+            .cursor-box {
+            width: 30em;
+            height: 30em;
+            position: absolute;
+            box-shadow: 0 0 0 10000px rgba(0, 0, 0, 1.0);
+            z-index: 10;
+            border-radius: 50%;
+            filter: blur(50px);
+            }
+            .cursor-box-child {
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            border-radius: 50%;
+            border: 0;
+            box-shadow: inset 0px 0px 200px 75px rgba(0,0,0,1.0);
+            }
+
+            .thing {
+            width: 100%;
+            height: 100%;
+            background: url("https://i.ibb.co/w75pWTV/stone.png");
+            }
+
+        </style>
+
+        <script>
+
+            const spotlight = document.getElementById("spotlight");
+            const spotlight_child = document.getElementById("spotlight-child");
+            const main = document.getElementById("main");
+            main.addEventListener("mousemove", moveSpotlight);
+            main.addEventListener("touchmove", moveSpotlight);
+            function moveSpotlight(e) {
+            let pos, x, y;
+            e.preventDefault();
+            x = e.clientX - 300;
+            y = e.clientY - 350;
+            spotlight.style.left = x + "px";
+            spotlight.style.top = y + "px";
+            spotlight_child.style.left = x + "px";
+            spotlight_child.style.top = y + "px";
+            }
+
+        </script>
+    </body>
+</html>
